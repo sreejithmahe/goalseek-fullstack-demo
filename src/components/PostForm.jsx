@@ -26,7 +26,7 @@ import axios from 'axios'
          loading : true
 
          }) 
-     axios.post('https://ec2-13-58-35-69.us-east-2.compute.amazonaws.com/goalseek',this.state)
+     axios.post('http://13.58.35.69/goalseek',this.state)
       .then(response =>  {
              console.log(response)
              this.setState({
