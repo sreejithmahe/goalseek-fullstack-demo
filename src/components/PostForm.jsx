@@ -26,7 +26,7 @@ import axios from 'axios'
          loading : true
 
          }) 
-     axios.post('http://goalseek-apiapp.cdcksksx6f.us-east-2.elasticbeanstalk.com/goalseek',this.state)
+     axios.post('https://ec2-13-58-35-69.us-east-2.compute.amazonaws.com/goalseek',this.state)
       .then(response =>  {
              console.log(response)
              this.setState({
