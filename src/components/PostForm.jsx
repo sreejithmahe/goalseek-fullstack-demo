@@ -26,7 +26,7 @@ import axios from 'axios'
          loading : true
 
          }) 
-     axios.post('http://13.58.35.69/goalseek',this.state)
+     axios.post('http://localhost:8009/goalseek',this.state)
       .then(response =>  {
              console.log(response)
              this.setState({
@@ -51,30 +51,46 @@ import axios from 'axios'
       } else 
        {
         
-          // return this.state.message.map((invoices, index) => {
-          //    const { period, openingBalance, closingBalance, leaseFee } = invoices //destructuring
-          //    return (
-          //       <tr key={period}>
-          //          <td>{period}</td>
-          //          <td>{openingBalance}</td>
-          //          <td>{closingBalance}</td>
-          //          <td>{leaseFee}</td>
-          //       </tr>
-          //    )
-          // })
+          return this.state.message.map((invoices, index) => {
+             const { period, openingBalance, depreciation,closingBalance,interestRate,margin,tlp,leaseFee } = invoices //destructuring
+             return (
+                <tr key={period} bgcolor="#C5E415">
+                   <td>{period}</td>
+                   <td>{openingBalance}</td>
+                   <td>{depreciation}</td>
+                   <td>{closingBalance}</td>
+                   <td>{interestRate}</td>
+                   <td>{margin}</td>
+                   <td>{tlp}</td>
+                   <td>{leaseFee}</td>
+                </tr>
+             )
+          })
        
-         return (
-           <ul>
-             <u>Period</u> &nbsp;&nbsp;&nbsp;&nbsp; <u>OB</u>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>CB</u>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             &nbsp;<u>leaseFee</u>
-            {this.state.message.map(invoices => (
-        <p key={invoices.period}>{invoices.period}&nbsp; &nbsp; &nbsp;{invoices.openingBalance} 
-        &nbsp; &nbsp; &nbsp;{invoices.closingBalance}&nbsp; &nbsp; &nbsp;
-         {invoices.leaseFee}
-         </p>
-         ))}
-        </ul>
-         );
+        //  return (
+        //    <ul>
+        //      <u>Period</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        //      <u>OB</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        //      <u>Depreciation</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        //      <u>CB</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        //      <u>Interest</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        //      <u>margin</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+        //      <u>tlp</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+        //      <u>leaseFee</u>
+        //     {this.state.message.map(invoices => (
+        // <p key={invoices.period}>
+        // {invoices.period}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        // {invoices.openingBalance}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        // {invoices.depreciation}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        // {invoices.closingBalance}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; 
+        // {invoices.interestRate}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; 
+        // {invoices.margin}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        // {invoices.tlp}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        // {invoices.leaseFee}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        //  </p>
+        //  ))}
+        // </ul>
+        //  );
        }
     }
 
@@ -94,7 +110,21 @@ import axios from 'axios'
      <div> <input type="text" placeholder = "indexPeriod" name="indexPeriod" value={indexPeriod} onChange={this.changeHandler}/></div>
      <button type="submit">Submit</button>
     	</form>
-      {this.loadOrShowMsg()}
+<table border="2" cellspacing="5" width="50%"  align="center">
+  <tr bgcolor="#E3D3CF">
+    <td>Period</td>
+    <td>OB</td>
+    <td>Depreciation</td>
+    <td>CB</td>
+    <td>Interest</td>
+    <td>Margin</td> 
+    <td>TLP</td>
+    <td>LeaseFee</td>
+  </tr>
+  {this.loadOrShowMsg()}
+</table>
+
+      
 </div>
       );
     }
